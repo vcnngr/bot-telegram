@@ -18,3 +18,4 @@
 NOTE:
 - La prima volta ti verrà chiesto un codice Telegram
 - I dati di sessione sono salvati nella cartella "session"
+
