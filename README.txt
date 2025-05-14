@@ -7,12 +7,11 @@
    docker build -t telegram-bot-intermediario .
 
 3. ESEGUI IL CONTAINER con variabili personalizzate:
-   docker run -it --rm \\
-     -e API_ID=123456 \\
-     -e API_HASH=abc123yourhash \\
-     -e PHONE_NUMBER=+39XXXXXXXXXX \\
-     -e WEBHOOK_URL=https://tuo-n8n/webhook/telegram_response \\
-     -v $(pwd)/session:/app/session \\
+   docker run -it --rm \
+     -e API_ID=123456 \
+     -e API_HASH=abc123yourhash \
+     -e PHONE_NUMBER=+39XXXXXXXXXX \
+     -v $(pwd)/session:/app/session \
      telegram-bot-intermediario
 
 NOTE:
