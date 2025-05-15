@@ -8,12 +8,13 @@ from flask import Flask, request, jsonify
 api_id = int(os.getenv('API_ID'))
 api_hash = os.getenv('API_HASH')
 phone_number = os.getenv('PHONE_NUMBER')
+webhook_url = os.getenv('WEBHOOK_URL', None)
 bot_username = os.getenv('BOT_USERNAME')
-session_name = 'session_bot_saved'
+session_name = 'session_vcnngr'
 LOG_FILE = "/app/logs/bot_interaction.log"
 KEYS_FILE = "/app/keys/api_keys.txt"
 MASTER_KEY = os.getenv('MASTER_API_KEY')
-TIMEOUT_SECONDS = 90
+TIMEOUT_SECONDS = 20
 
 app = Flask(__name__)
 
@@ -61,6 +62,10 @@ def ask_bot():
 
     answer = asyncio.run(process_question(question))
     return jsonify(answer), 200
+
+@app.route("/healthz", methods=["GET"])
+def health_check():
+    return "OK", 200
 
 async def process_question(question):
     client = TelegramClient(session_name, api_id, api_hash)
